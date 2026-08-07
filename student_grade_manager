@@ -1,0 +1,32 @@
+class grade_app():
+
+  def __init__(self):
+    self.students = []
+    self.student_info = {}
+
+  def __init__(self,name,grades):
+    self.students =[].append(name)
+    self.student_info = {}
+    self.student_info["Name"] = name
+    self.student_info["Grade"] = grades
+
+  def add_student(self,student):
+    self.student_info["Name"] = student
+    if student in self.students:
+      print("Student already in list")
+    else: 
+      self.students.append(student)
+
+    return f"{student} added"
+
+  def view_students(self):
+    return self.students
+
+  def student_search(self,student):
+    if student in self.student_info:
+      return student
+    else: 
+      return "Student not found"
+
+  def remove_student(self):
+    
