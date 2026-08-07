@@ -28,5 +28,12 @@ class grade_app():
     else: 
       return "Student not found"
 
-  def remove_student(self):
-    
+  def remove_student(self, student):
+    if student in self.students: 
+      self.students.remove(student)
+      del self.student_info["name"]
+    else: 
+      print(f"{student} not there")
+
+  
+  
