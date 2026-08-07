@@ -1,21 +1,18 @@
 class grade_app():
 
   def __init__(self):
-    self.students = []
     self.student_info = {}
 
-  def __init__(self,name,grades):
-    self.students =[].append(name)
+  def __init__(self,name,grade):
     self.student_info = {}
-    self.student_info["Name"] = name
-    self.student_info["Grade"] = grades
+    self.student_info["Name"] = name.capitalize()
+    self.student_info["Grade"] = grade
 
   def add_student(self,student):
-    self.student_info["Name"] = student
-    if student in self.students:
-      print("Student already in list")
+    if student.capitalize() == self.student_info["Name"] :
+      print("Student already added")
     else: 
-      self.students.append(student)
+      self.student_info["Name"] = student
 
     return f"{student} added"
 
@@ -29,11 +26,38 @@ class grade_app():
       return "Student not found"
 
   def remove_student(self, student):
-    if student in self.students: 
-      self.students.remove(student)
+    if student == self.student_info["name"]: 
       del self.student_info["name"]
     else: 
       print(f"{student} not there")
 
+  def load_students(self):
+    import json 
+    import os
+
+    if os.path.exists("Students.json"):
+      with open("Students.json", "r") as f:
+        students = json.load(f)
+        return students
+    else: 
+      return "Student.json doesn't exist include the students to create"
+
+  def save_students(self):
+    import json
+    with open("Students.json", "w") as f:
+      json.dump(self.student_info, f, indent=2)
+
+
+
+    
+
+
   
+
+      
+
+
+  
+  
+
   
