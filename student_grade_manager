@@ -1,37 +1,35 @@
 class grade_app():
 
-  def __init__(self):
-    self.student_info = {}
-
   def __init__(self,name,grade):
     self.student_info = {}
     self.student_info["Name"] = name.capitalize()
     self.student_info["Grade"] = grade
 
   def add_student(self,student):
-    if student.capitalize() == self.student_info["Name"] :
-      print("Student already added")
+    student = student.capitalize()
+    self.student_info["Name"] = student
+    print(f"{student} added")
+
+  def view_student(self):
+    if "Name" in self.student_info:
+      print(self.student_info["Name"])
     else: 
-      self.student_info["Name"] = student
-
-    return f"{student} added"
-
-  def view_students(self):
-    return self.students
+      print("Add the name first")
+    
 
   def student_search(self,student):
-    if student in self.student_info:
-      return student
+    if student in self.student_info.values():
+      return f"{student} found!"
     else: 
       return "Student not found"
 
   def remove_student(self, student):
-    if student == self.student_info["name"]: 
-      del self.student_info["name"]
+    if student == self.student_info["Name"]: 
+      del self.student_info["Name"]
     else: 
       print(f"{student} not there")
 
-  def load_students(self):
+  def load_student(self):
     import json 
     import os
 
@@ -42,10 +40,22 @@ class grade_app():
     else: 
       return "Student.json doesn't exist include the students to create"
 
-  def save_students(self):
+  def save_student(self):
     import json
     with open("Students.json", "w") as f:
       json.dump(self.student_info, f, indent=2)
+
+
+s1 = grade_app("Mustufa", 10)
+
+print(s1.view_student())
+s1.add_student("Ibrahim")
+print(s1.student_search("Ibrahim"))
+s1.remove_student("Ibrahim")
+s1.view_student()
+s1.add_student("Ibrahim")
+s1.save_student()
+
 
 
 
