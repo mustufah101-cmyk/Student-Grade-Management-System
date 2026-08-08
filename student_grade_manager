@@ -6,25 +6,26 @@ class grade_app():
     self.student_info["Grade"] = grade
 
   def add_student(self,student):
-    if student.capitalize() == self.student_info["Name"] :
-      print("Student already added")
-    else: 
-      self.student_info["Name"] = student
-
-    return f"{student} added"
+    student = student.capitalize()
+    self.student_info["Name"] = student
+    print(f"{student} added")
 
   def view_student(self):
-    return self.student_info["Name"]
+    if "Name" in self.student_info:
+      print(self.student_info["Name"])
+    else: 
+      print("Add the name first")
+    
 
   def student_search(self,student):
-    if student in self.student_info:
-      return student
+    if student in self.student_info.values():
+      return f"{student} found!"
     else: 
       return "Student not found"
 
   def remove_student(self, student):
-    if student == self.student_info["name"]: 
-      del self.student_info["name"]
+    if student == self.student_info["Name"]: 
+      del self.student_info["Name"]
     else: 
       print(f"{student} not there")
 
@@ -49,6 +50,11 @@ s1 = grade_app("Mustufa", 10)
 
 print(s1.view_student())
 s1.add_student("Ibrahim")
+print(s1.student_search("Ibrahim"))
+s1.remove_student("Ibrahim")
+s1.view_student()
+s1.add_student("Ibrahim")
+
 
 
     
