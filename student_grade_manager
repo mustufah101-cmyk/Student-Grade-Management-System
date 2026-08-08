@@ -29,7 +29,7 @@ class grade_app():
     else: 
       print(f"{student} not there")
 
-  def load_students(self):
+  def load_student(self):
     import json 
     import os
 
@@ -40,7 +40,7 @@ class grade_app():
     else: 
       return "Student.json doesn't exist include the students to create"
 
-  def save_students(self):
+  def save_student(self):
     import json
     with open("Students.json", "w") as f:
       json.dump(self.student_info, f, indent=2)
@@ -54,6 +54,8 @@ print(s1.student_search("Ibrahim"))
 s1.remove_student("Ibrahim")
 s1.view_student()
 s1.add_student("Ibrahim")
+s1.save_student()
+
 
 
 
